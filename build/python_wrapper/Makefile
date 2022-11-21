@@ -57,10 +57,10 @@ RM = /home/server10/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E r
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Point_Generation
+CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Object_Generation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Point_Generation/build
+CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Object_Generation/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper//CMakeFiles/progress.marks
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles 0
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper//CMakeFiles/progress.marks
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/clean
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/preinstall
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/preinstall
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 python_wrapper/CMakeFiles/pypatchworkpp.dir/rule:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/CMakeFiles/pypatchworkpp.dir/rule
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 python_wrapper/CMakeFiles/pypatchworkpp.dir/rule
 .PHONY : python_wrapper/CMakeFiles/pypatchworkpp.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ pypatchworkpp: python_wrapper/CMakeFiles/pypatchworkpp.dir/rule
 
 # fast build rule for target.
 pypatchworkpp/fast:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/build
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/build
 .PHONY : pypatchworkpp/fast
 
 pybinding.o: pybinding.cpp.o
@@ -180,7 +180,7 @@ pybinding.o: pybinding.cpp.o
 
 # target to build an object file
 pybinding.cpp.o:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o
 .PHONY : pybinding.cpp.o
 
 pybinding.i: pybinding.cpp.i
@@ -188,7 +188,7 @@ pybinding.i: pybinding.cpp.i
 
 # target to preprocess a source file
 pybinding.cpp.i:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i
 .PHONY : pybinding.cpp.i
 
 pybinding.s: pybinding.cpp.s
@@ -196,7 +196,7 @@ pybinding.s: pybinding.cpp.s
 
 # target to generate assembly for a file
 pybinding.cpp.s:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s
 .PHONY : pybinding.cpp.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -13,7 +13,7 @@ from dataloader.loader import *
 from tools.convert_coordinate import *
 
 try:
-    patchwork_module_path = os.path.join("/home/server10/Synthetic_3D_Point_Generation", "build/python_wrapper")
+    patchwork_module_path = os.path.join("/home/server10/Synthetic_3D_Object_Generation", "build/python_wrapper")
     sys.path.insert(0, patchwork_module_path)
     import pypatchworkpp
 except ImportError:
@@ -112,6 +112,7 @@ def object_collision_filtering(ground, collision_threshold):
 
     return ground
 
+
 def collision_filtering(ground, obj_point, collision_threshold):
     ground_x = ground[:, 0]
     ground_y = ground[:, 1]
@@ -133,16 +134,12 @@ def collision_filtering(ground, obj_point, collision_threshold):
 
 
 def select_position(ground, nonground, label_json, min_distance, max_distance, max_object_num, sampling_num, select_epoch, collision_threshold):
+    print("-- Generating Object position...")
+
     ground = from_xyz_to_xyzi(ground)
+    ground = np.delete(ground, np.where(ground[:, 0] < 0), axis = 0)
     ground_spherical = convert_orthogonal_to_spherical(ground)
-
-    ground_r = ground_spherical[:, 0]
-    ground_spherical = np.delete(ground_spherical, np.where(ground_r < min_distance), axis = 0)
-
-    ground_pi = ground_spherical[:, 2]
-    ground_spherical = np.delete(ground_spherical, np.where((math.pi / 4 < ground_pi) & (ground_pi < 7 * (ground_pi / 4))), axis = 0)
-
-    ground = convert_spherical_to_orthogonal(ground_spherical)
+    ground = np.delete(ground, np.where(ground_spherical[:, 0] < 10), axis=0)
 
     object_num = 1
     position = np.zeros((1, 3), dtype = np.float32)
@@ -150,7 +147,6 @@ def select_position(ground, nonground, label_json, min_distance, max_distance, m
 
     if sampling_num < ground.shape[0]:
         for epoch in range(select_epoch):
-
             random_index = random.sample(range(ground.shape[0]), ground.shape[0] - sampling_num)
             ground_sample = np.delete(ground, random_index, axis = 0)
 
@@ -200,4 +196,6 @@ def select_position(ground, nonground, label_json, min_distance, max_distance, m
     else:
         position = None
 
+    if position is not None:
+        print("   Position : \n{}".format(position))
     return position

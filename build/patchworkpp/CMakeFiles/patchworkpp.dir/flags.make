@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dpatchworkpp_EXPORTS
 
-CXX_INCLUDES = -I/home/server10/Synthetic_3D_Point_Generation/build/patchworkpp/include -I/home/server10/Synthetic_3D_Point_Generation/patchworkpp/include -isystem /usr/include/eigen3
+CXX_INCLUDES = -I/home/server10/Synthetic_3D_Object_Generation/build/patchworkpp/include -I/home/server10/Synthetic_3D_Object_Generation/patchworkpp/include -isystem /usr/include/eigen3
 
 CXX_FLAGS = -O3 -DNDEBUG -fPIC -std=gnu++14
 

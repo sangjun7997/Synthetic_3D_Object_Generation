@@ -57,10 +57,10 @@ RM = /home/server10/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E r
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Point_Generation
+CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Object_Generation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Point_Generation/build
+CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Object_Generation/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles /home/server10/Synthetic_3D_Point_Generation/build/_deps/pybind11-build//CMakeFiles/progress.marks
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles 0
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles /home/server10/Synthetic_3D_Object_Generation/build/_deps/pybind11-build//CMakeFiles/progress.marks
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/clean
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,17 +148,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/preinstall
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/preinstall
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _deps/pybind11-build/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -184,6 +184,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

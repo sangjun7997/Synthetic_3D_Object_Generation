@@ -16,6 +16,8 @@ def convert_orthogonal_to_spherical(orthogonal):
 
     spherical = np.stack((r_lidar, theta_lidar, pi_lidar, intensity_lidar), axis = 1)
 
+    spherical = np.delete(spherical, np.where(r_lidar == 0), axis = 0)
+
     return spherical
 
 def convert_spherical_to_orthogonal(spherical):    

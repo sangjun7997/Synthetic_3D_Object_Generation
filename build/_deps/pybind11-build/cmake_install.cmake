@@ -1,4 +1,4 @@
-# Install script for directory: /home/server10/Synthetic_3D_Point_Generation/build/_deps/pybind11-src
+# Install script for directory: /home/server10/Synthetic_3D_Object_Generation/build/_deps/pybind11-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

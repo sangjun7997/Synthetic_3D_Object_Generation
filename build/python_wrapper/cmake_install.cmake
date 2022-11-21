@@ -1,4 +1,4 @@
-# Install script for directory: /home/server10/Synthetic_3D_Point_Generation/python_wrapper
+# Install script for directory: /home/server10/Synthetic_3D_Object_Generation/python_wrapper
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

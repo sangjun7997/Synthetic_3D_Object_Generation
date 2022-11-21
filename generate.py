@@ -19,7 +19,7 @@ h_resolution = 0.0060       # horizontal resolution (assuming 20Hz setting)
 v_resolution = 0.0030       # vertical res 128ch
 max_object_num = 10
 object_sampling_num = 100
-min_object_distance = 5
+min_object_distance = 10
 max_object_distance = 100
 collision_threshold = 6
 select_epoch = 10
@@ -28,8 +28,8 @@ input_lidar_path = '/media/server10/T7/LiDAR_bag/Synth/lidar'
 input_label_path = '/media/server10/T7/LiDAR_bag/Synth/label'
 input_calib_path = '/media/server10/T7/LiDAR_bag/Synth/calib'
 
-output_lidar_path = '/media/server10/T7/SynthPoints/daegu_output/lidar'
-output_label_path = '/media/server10/T7/SynthPoints/daegu_output/label'
+output_lidar_path = '/media/server10/T7/SynthPoints/20221121_output/lidar'
+output_label_path = '/media/server10/T7/SynthPoints/20221121_output/label'
 
 object_path = 'data/object/car'
 
@@ -43,11 +43,16 @@ total_delete_object = 0
 start = time.time()
 
 #for lidar in tqdm(sorted(os.listdir(lidar_path))):
-for lidar in tqdm(bin_name_list):
+#for lidar in tqdm(bin_name_list):
+for lidar in bin_name_list:
+    print("-----------------------------------------------------------------------")
+    print("File Num : {}".format(lidar))
     lidar = lidar + '.pcd'
     lidar_num = lidar.split('.')[0]
 
     road_original = load_lidar_data(input_lidar_path, lidar)
+    road_original = np.delete(road_original, np.where((road_original[:, 0] == 0) & (road_original[:, 1] == 0) & (road_original[:, 2] == 0)), axis = 0)
+
     label_json, label_txt = load_label_data(input_label_path, lidar_num)
 
     calib_matrix = get_matrix(os.path.join(input_calib_path, lidar_num + '.txt'), "Tr_velo_to_cam", "R0_rect")

@@ -1,4 +1,4 @@
-# Install script for directory: /home/server10/Synthetic_3D_Point_Generation
+# Install script for directory: /home/server10/Synthetic_3D_Object_Generation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/server10/Synthetic_3D_Point_Generation/build/patchworkpp/cmake_install.cmake")
-  include("/home/server10/Synthetic_3D_Point_Generation/build/python_wrapper/cmake_install.cmake")
+  include("/home/server10/Synthetic_3D_Object_Generation/build/patchworkpp/cmake_install.cmake")
+  include("/home/server10/Synthetic_3D_Object_Generation/build/python_wrapper/cmake_install.cmake")
 
 endif()
 
@@ -57,5 +57,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/server10/Synthetic_3D_Point_Generation/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/server10/Synthetic_3D_Object_Generation/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

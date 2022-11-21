@@ -1,7 +1,7 @@
 patchworkpp/CMakeFiles/patchworkpp.dir/src/patchworkpp.cpp.o: \
- /home/server10/Synthetic_3D_Point_Generation/patchworkpp/src/patchworkpp.cpp \
+ /home/server10/Synthetic_3D_Object_Generation/patchworkpp/src/patchworkpp.cpp \
  /usr/include/stdc-predef.h \
- /home/server10/Synthetic_3D_Point_Generation/patchworkpp/include/patchworkpp.h \
+ /home/server10/Synthetic_3D_Object_Generation/patchworkpp/include/patchworkpp.h \
  /usr/include/c++/9/iostream \
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \

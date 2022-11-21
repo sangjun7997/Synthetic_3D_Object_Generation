@@ -5,6 +5,8 @@ import sys
 import random
 from tqdm import tqdm
 
+#np.set_printoptions(threshold=sys.maxsize)
+
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from tools.rotate_points import *
 from tools.convert_coordinate import *
@@ -79,7 +81,7 @@ def sampling_object_points_by_distance(obj_point, position):
 
 
 def generate_object(road_orthogonal, object_orthogonal, object_label, position, rotation, h_res, v_res):
-    #print("-- Generating Object on the Road in position [{:.3f}, {:.3f}, {:.3f}]...".format(position[0], position[1], position[2]))
+    print("-- Generating Object on the Road in position [{:.3f}, {:.3f}, {:.3f}]...".format(position[0], position[1], position[2]))
 
     # Insert Object Position
     object_copy = object_orthogonal.copy()
@@ -101,47 +103,47 @@ def generate_object(road_orthogonal, object_orthogonal, object_label, position, 
 
     road_spherical = convert_orthogonal_to_spherical(road_orthogonal)
     object_spherical = convert_orthogonal_to_spherical(object_copy)
-    
-    road_theta = road_spherical[:, 1]
-    road_pi = road_spherical[:, 2]
 
-    object_num = object_spherical.shape[0]
+    object_spherical_left = np.delete(object_spherical, np.where(math.pi < object_spherical[:, 2]), 0)
+    object_spherical_right = np.delete(object_spherical, np.where(object_spherical[:, 2] < math.pi), 0)
 
-    object_r = object_spherical[:, 0]
-    object_theta = object_spherical[:, 1]
-    object_pi = object_spherical[:, 2]
+    if object_spherical_left.shape[0] == 0 or object_spherical_right.shape[0] == 0:
+        object_theta_min = np.min(object_spherical[:, 1])
+        object_theta_max = np.max(object_spherical[:, 1])
+        object_pi_min = np.min(object_spherical[:, 2])
+        object_pi_max = np.max(object_spherical[:, 2])
 
-    object_theta_min = np.min(object_theta)
-    object_theta_max = np.max(object_theta)
-    object_pi_min = np.min(object_pi)
-    object_pi_max = np.max(object_pi)
+        roi_spherical = np.delete(road_spherical, np.where((road_spherical[:, 1] < object_theta_min) | \
+            (object_theta_max < road_spherical[:, 1]) | (road_spherical[:, 2] < object_pi_min) | \
+            (object_pi_max < road_spherical[:, 2])), 0)
+        bgd_spherical = np.delete(road_spherical, np.where((object_theta_min < road_spherical[:, 1]) & \
+            (road_spherical[:, 1] < object_theta_max) & (object_pi_min < road_spherical[:, 2]) & \
+            (road_spherical[:, 2] < object_pi_max)), 0)
 
-    if object_pi_max - object_pi_min < math.pi:
-        object_left_pi = object_pi_max
-        object_right_pi = object_pi_min
-    else:
-        object_spherical_left = np.delete(object_pi, np.where(math.pi < object_pi), 0)
-        object_spherical_right = np.delete(object_pi, np.where(object_pi < math.pi), 0)
-        object_left_pi = np.max(object_spherical_left)
-        object_right_pi = np.min(object_spherical_right)
-
-    # Seperate Road Points into RoI and Backgrouond
-    if object_pi_max - object_pi_min < math.pi:
-        roi_spherical = np.delete(road_spherical, np.where((road_theta < object_theta_min) | (object_theta_max < road_theta) | (road_pi < object_right_pi) | (object_left_pi < road_pi)), 0)
-        bgd_spherical = np.delete(road_spherical, np.where((object_theta_min < road_theta) & (road_theta < object_theta_max) & (object_right_pi < road_pi) & (road_pi < object_left_pi)), 0)
-    else:
-        roi_spherical_left = np.delete(road_spherical, np.where((road_theta < object_theta_min) | (object_theta_max < road_theta) | (object_left_pi < road_pi)), 0)
-        roi_spherical_right = np.delete(road_spherical, np.where((road_theta < object_theta_min) | (object_theta_max < road_theta) | (road_pi < object_right_pi)), 0)
-        roi_spherical = np.concatenate((roi_spherical_left, roi_spherical_right), axis = 0)
-        bgd_spherical = np.delete(road_spherical, np.where((object_theta_min < road_theta) & (road_theta < object_theta_max) & ((road_pi < object_left_pi) | (object_right_pi < road_pi))), 0)
-
-    # Make Wall Points for RoI
-    if object_pi_max - object_pi_min < math.pi:
         wall_orthogonal = make_point_wall(object_theta_min, object_theta_max, object_pi_min, object_pi_max, h_res, v_res)
+
     else:
-        wall_orthogonal_left = make_point_wall(object_theta_min, object_theta_max, 0, object_left_pi, h_res, v_res)
-        wall_orthogonal_right = make_point_wall(object_theta_min, object_theta_max, object_right_pi, 2 * math.pi, h_res, v_res)
+        object_theta_min = np.min(object_spherical[:, 1])
+        object_theta_max = np.max(object_spherical[:, 1])
+
+        object_left_pi = object_spherical_left[:, 2]
+        object_right_pi = object_spherical_right[:, 2]
+
+        object_pi_left = np.max(object_left_pi)
+        object_pi_right = np.min(object_right_pi)
+        roi_spherical_left = np.delete(road_spherical, np.where((road_spherical[:, 1] < object_theta_min) | \
+            (object_theta_max < road_spherical[:, 1]) | (object_pi_left < road_spherical[:, 2])), 0)
+        roi_spherical_right = np.delete(road_spherical, np.where((road_spherical[:, 1] < object_theta_min) | \
+            (object_theta_max < road_spherical[:, 1]) | (road_spherical[:, 2] < object_pi_right)), 0)
+        roi_spherical = np.concatenate((roi_spherical_left, roi_spherical_right), axis = 0)
+        bgd_spherical = np.delete(road_spherical, np.where((object_theta_min < road_spherical[:, 1]) & \
+            (road_spherical[:, 1] < object_theta_max) & \
+            ((road_spherical[:, 2] < object_pi_left) | (object_pi_right < road_spherical[:, 2]))), 0)
+
+        wall_orthogonal_left = make_point_wall(object_theta_min, object_theta_max, 0, object_pi_left, h_res, v_res)
+        wall_orthogonal_right = make_point_wall(object_theta_min, object_theta_max, object_pi_right, 2 * math.pi, h_res, v_res)
         wall_orthogonal = np.concatenate((wall_orthogonal_left, wall_orthogonal_right), axis = 0)
+
 
     wall_spherical = convert_orthogonal_to_spherical(wall_orthogonal)
     
@@ -150,19 +152,19 @@ def generate_object(road_orthogonal, object_orthogonal, object_label, position, 
     wall_theta = wall_spherical[:, 1]
     wall_pi = wall_spherical[:, 2]
 
-    #print("     Extracting Object Points from Wall Points...")
-
-    for wall_point in wall_spherical:
-        for object_point in object_spherical:
-            h_distance = abs(wall_point[2]- object_point[2])
-            v_distance = abs(wall_point[1]- object_point[1])
-            if h_distance < h_res and v_distance < v_res and object_point[0] < wall_point[0]:
+    print("   Extracting Object Points from Wall Points...")
+    for wall_point in tqdm(wall_spherical):
+        obj_roi_spherical = np.delete(object_spherical, np.where(((object_spherical[:, 1] < wall_point[1] - (v_res / 2)) | \
+            (wall_point[1] + (v_res / 2) < object_spherical[:, 1])) | ((object_spherical[:, 2] < wall_point[2] - (h_res / 2)) | \
+            (wall_point[2] + (h_res / 2) < object_spherical[:, 2]))), 0)
+        for object_point in obj_roi_spherical:
+            if object_point[0] < wall_point[0]:
                 wall_point[0] = object_point[0]
     projected_object = np.delete(wall_spherical, np.where(wall_r > 95), 0)
     projected_object_copy = projected_object.copy()
     projected_object_copy = convert_spherical_to_orthogonal(projected_object_copy)
 
-    #print("   Done")
+    print("   Done")
 
     projected_object_r = projected_object[:, 0]
     projected_object_theta = projected_object[:, 1]
@@ -179,17 +181,19 @@ def generate_object(road_orthogonal, object_orthogonal, object_label, position, 
     roi_delete_list = []
     object_delete_list = []
 
-    for roi_ind in range(roi_num):
+    print("   Removing Shadow from Object Points...")
+    for roi_ind in tqdm(range(roi_num)):
         for object_ind in range(projected_object_num):
-            h_distance = abs(roi_spherical_pi[roi_ind] - projected_object_pi[object_ind])
-            v_distance = abs(roi_spherical_theta[roi_ind] - projected_object_theta[object_ind])
-
-            if h_distance < h_res / 2 and v_distance < v_res / 2:
+            if (-(v_res / 2) < roi_spherical_theta[roi_ind] - projected_object_theta[object_ind]) & \
+            (roi_spherical_theta[roi_ind] - projected_object_theta[object_ind] < (v_res / 2)) & \
+            (-(h_res / 2) < roi_spherical_pi[roi_ind] - projected_object_pi[object_ind]) & \
+            (roi_spherical_pi[roi_ind] - projected_object_pi[object_ind] < (h_res / 2)):
                 if projected_object_r[object_ind] < roi_spherical_r[roi_ind]:
                     roi_delete_list.append(roi_ind)
                 else:
                     object_delete_list.append(object_ind)
     
+    print("   Done")
     roi_spherical = np.delete(roi_spherical, roi_delete_list, axis = 0)
     projected_object = np.delete(projected_object, object_delete_list, axis = 0)
 
@@ -222,7 +226,10 @@ def check_object_points(lidar, label, calib_matrix):
 
         lidar_copy = rotation_matrix(lidar_copy, [0, 0, -rotation[2]])
 
-        object_points = np.delete(lidar_copy, np.where((lidar_copy[:, 0] < -(scale[0] / 2)) | (scale[0] / 2 < lidar_copy[:, 0]) | (lidar_copy[:, 1] < -(scale[1] / 2)) | (scale[1] / 2 < lidar_copy[:, 1]) | (lidar_copy[:, 2] < -(scale[2] / 2)) | (scale[2] / 2 < lidar_copy[:, 2])), axis = 0)
+        object_points = np.delete(lidar_copy, np.where((lidar_copy[:, 0] < -(scale[0] / 2)) | \
+            (scale[0] / 2 < lidar_copy[:, 0]) | (lidar_copy[:, 1] < -(scale[1] / 2)) | \
+            (scale[1] / 2 < lidar_copy[:, 1]) | (lidar_copy[:, 2] < -(scale[2] / 2)) | \
+            (scale[2] / 2 < lidar_copy[:, 2])), axis = 0)
 
         if 5 < object_points.shape[0]:
             new_label.append(obj)
@@ -251,6 +258,9 @@ def get_points_in_bbox(lidar, label, calib_matrix):
 
         lidar_copy = rotation_matrix(lidar_copy, [0, 0, -rotation[2]])
 
-        object_points = np.delete(lidar_copy, np.where((lidar_copy[:, 0] < -(scale[0] / 2)) | (scale[0] / 2 < lidar_copy[:, 0]) | (lidar_copy[:, 1] < -(scale[1] / 2)) | (scale[1] / 2 < lidar_copy[:, 1]) | (lidar_copy[:, 2] < -(scale[2] / 2)) | (scale[2] / 2 < lidar_copy[:, 2])), axis = 0)
+        object_points = np.delete(lidar_copy, np.where((lidar_copy[:, 0] < -(scale[0] / 2)) | \
+            (scale[0] / 2 < lidar_copy[:, 0]) | (lidar_copy[:, 1] < -(scale[1] / 2)) | \
+            (scale[1] / 2 < lidar_copy[:, 1]) | (lidar_copy[:, 2] < -(scale[2] / 2)) | \
+            (scale[2] / 2 < lidar_copy[:, 2])), axis = 0)
 
     return object_points

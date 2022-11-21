@@ -45,14 +45,14 @@ unset(_expectedTargets)
 add_library(PATCHWORK::patchworkpp SHARED IMPORTED)
 
 set_target_properties(PATCHWORK::patchworkpp PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/home/server10/Synthetic_3D_Point_Generation/build/patchworkpp/include;/home/server10/Synthetic_3D_Point_Generation/patchworkpp/include"
+  INTERFACE_INCLUDE_DIRECTORIES "/home/server10/Synthetic_3D_Object_Generation/build/patchworkpp/include;/home/server10/Synthetic_3D_Object_Generation/patchworkpp/include"
   INTERFACE_LINK_LIBRARIES "Eigen3::Eigen"
 )
 
 # Import target "PATCHWORK::patchworkpp" for configuration "Release"
 set_property(TARGET PATCHWORK::patchworkpp APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(PATCHWORK::patchworkpp PROPERTIES
-  IMPORTED_LOCATION_RELEASE "/home/server10/Synthetic_3D_Point_Generation/build/patchworkpp/libpatchworkpp.so"
+  IMPORTED_LOCATION_RELEASE "/home/server10/Synthetic_3D_Object_Generation/build/patchworkpp/libpatchworkpp.so"
   IMPORTED_SONAME_RELEASE "libpatchworkpp.so"
   )
 

@@ -53,10 +53,10 @@ RM = /home/server10/.local/lib/python3.8/site-packages/cmake/data/bin/cmake -E r
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Point_Generation
+CMAKE_SOURCE_DIR = /home/server10/Synthetic_3D_Object_Generation
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Point_Generation/build
+CMAKE_BINARY_DIR = /home/server10/Synthetic_3D_Object_Generation/build
 
 # Include any dependencies generated for this target.
 include python_wrapper/CMakeFiles/pypatchworkpp.dir/depend.make
@@ -72,16 +72,16 @@ include python_wrapper/CMakeFiles/pypatchworkpp.dir/flags.make
 python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o: python_wrapper/CMakeFiles/pypatchworkpp.dir/flags.make
 python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o: ../python_wrapper/pybinding.cpp
 python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o: python_wrapper/CMakeFiles/pypatchworkpp.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o"
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o -MF CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o.d -o CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o -c /home/server10/Synthetic_3D_Point_Generation/python_wrapper/pybinding.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o"
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o -MF CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o.d -o CMakeFiles/pypatchworkpp.dir/pybinding.cpp.o -c /home/server10/Synthetic_3D_Object_Generation/python_wrapper/pybinding.cpp
 
 python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i"
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/server10/Synthetic_3D_Point_Generation/python_wrapper/pybinding.cpp > CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/server10/Synthetic_3D_Object_Generation/python_wrapper/pybinding.cpp > CMakeFiles/pypatchworkpp.dir/pybinding.cpp.i
 
 python_wrapper/CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s"
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/server10/Synthetic_3D_Point_Generation/python_wrapper/pybinding.cpp -o CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/server10/Synthetic_3D_Object_Generation/python_wrapper/pybinding.cpp -o CMakeFiles/pypatchworkpp.dir/pybinding.cpp.s
 
 # Object files for target pypatchworkpp
 pypatchworkpp_OBJECTS = \
@@ -94,19 +94,19 @@ python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so: python_wrapper/CMak
 python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so: python_wrapper/CMakeFiles/pypatchworkpp.dir/build.make
 python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so: patchworkpp/libpatchworkpp.so
 python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so: python_wrapper/CMakeFiles/pypatchworkpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/server10/Synthetic_3D_Point_Generation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module pypatchworkpp.cpython-38-x86_64-linux-gnu.so"
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pypatchworkpp.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && /usr/bin/strip /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/server10/Synthetic_3D_Object_Generation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module pypatchworkpp.cpython-38-x86_64-linux-gnu.so"
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pypatchworkpp.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && /usr/bin/strip /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so
 
 # Rule to build all files generated by this target.
 python_wrapper/CMakeFiles/pypatchworkpp.dir/build: python_wrapper/pypatchworkpp.cpython-38-x86_64-linux-gnu.so
 .PHONY : python_wrapper/CMakeFiles/pypatchworkpp.dir/build
 
 python_wrapper/CMakeFiles/pypatchworkpp.dir/clean:
-	cd /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper && $(CMAKE_COMMAND) -P CMakeFiles/pypatchworkpp.dir/cmake_clean.cmake
+	cd /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper && $(CMAKE_COMMAND) -P CMakeFiles/pypatchworkpp.dir/cmake_clean.cmake
 .PHONY : python_wrapper/CMakeFiles/pypatchworkpp.dir/clean
 
 python_wrapper/CMakeFiles/pypatchworkpp.dir/depend:
-	cd /home/server10/Synthetic_3D_Point_Generation/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/server10/Synthetic_3D_Point_Generation /home/server10/Synthetic_3D_Point_Generation/python_wrapper /home/server10/Synthetic_3D_Point_Generation/build /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper /home/server10/Synthetic_3D_Point_Generation/build/python_wrapper/CMakeFiles/pypatchworkpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/server10/Synthetic_3D_Object_Generation/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/server10/Synthetic_3D_Object_Generation /home/server10/Synthetic_3D_Object_Generation/python_wrapper /home/server10/Synthetic_3D_Object_Generation/build /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper /home/server10/Synthetic_3D_Object_Generation/build/python_wrapper/CMakeFiles/pypatchworkpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : python_wrapper/CMakeFiles/pypatchworkpp.dir/depend
 

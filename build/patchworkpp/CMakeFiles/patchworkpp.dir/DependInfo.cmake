@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/server10/Synthetic_3D_Point_Generation/patchworkpp/src/patchworkpp.cpp" "patchworkpp/CMakeFiles/patchworkpp.dir/src/patchworkpp.cpp.o" "gcc" "patchworkpp/CMakeFiles/patchworkpp.dir/src/patchworkpp.cpp.o.d"
+  "/home/server10/Synthetic_3D_Object_Generation/patchworkpp/src/patchworkpp.cpp" "patchworkpp/CMakeFiles/patchworkpp.dir/src/patchworkpp.cpp.o" "gcc" "patchworkpp/CMakeFiles/patchworkpp.dir/src/patchworkpp.cpp.o.d"
   )
 
 # Targets to which this target links.
